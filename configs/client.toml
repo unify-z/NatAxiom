@@ -1,0 +1,47 @@
+[client]
+# 服务端公网 IP 地址
+server_addr = "127.0.0.1"
+# 服务端控制端口
+control_port = 7000
+# 服务端数据端口
+data_port = 7001
+# 验证密钥
+token = "123456"
+
+# 日志与超时设置
+log_level = "info"
+dial_timeout_secs = 5
+heartbeat_interval_secs = 15
+reconnect_backoff_secs = 2
+max_reconnect_backoff_secs = 30
+udp_idle_secs = 60
+
+# 隧道配置
+
+# TCP 转发
+[[tunnels]]
+name = "filelist"
+type = "tcp"
+remote_port = 6001
+local_addr = "127.0.0.1:3000"
+
+# UDP 转发
+# [[tunnels]]
+# name = "dns"
+# type = "udp"
+# remote_port = 6053
+# local_addr = "127.0.0.1:53"
+
+# HTTP 穿透
+# [[tunnels]]
+# name = "web"
+# type = "http"
+# domain = "example.com"
+# local_addr = "127.0.0.1:8080"
+
+# HTTPS 穿透
+# [[tunnels]]
+# name = "web-ssl"
+# type = "https"
+# domain = "example.com"
+# local_addr = "

@@ -1,0 +1,27 @@
+[server]
+# 监听地址
+bind_addr = "0.0.0.0"
+# 客户端连接的控制端口
+control_port = 7000
+# 实际传输数据的端口
+data_port = 7001
+# 验证密钥
+token = "123456"
+
+# 日志与超时设置
+log_level = "info"
+max_pending_per_tunnel = 1024
+pending_timeout_secs = 30
+read_timeout_secs = 60
+write_timeout_secs = 60
+udp_idle_secs = 60
+
+# HTTP 穿透配置
+[http]
+bind_addr = "0.0.0.0"
+port = 8080 # 设置为 0 则禁用
+
+# HTTPS 穿透配置
+[https]
+bind_addr = "0.0.0.0"
+port = 0    # 设置为 0 则禁用
