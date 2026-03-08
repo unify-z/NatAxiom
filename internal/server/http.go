@@ -107,6 +107,7 @@ func (p *HTTPProxy) ServeHTTP(ctx context.Context) error {
 		Handler:      http.HandlerFunc(p.handleHTTPRequest),
 		ReadTimeout:  p.cfg.Server.ReadTimeout(),
 		WriteTimeout: p.cfg.Server.WriteTimeout(),
+		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler)),
 	}
 
 	go func() {
@@ -143,6 +144,7 @@ func (p *HTTPProxy) ServeHTTPS(ctx context.Context) error {
 		TLSConfig:    tlsConfig,
 		ReadTimeout:  p.cfg.Server.ReadTimeout(),
 		WriteTimeout: p.cfg.Server.WriteTimeout(),
+		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler)),
 	}
 
 	go func() {
